@@ -45,12 +45,7 @@ class Instructor extends Person {
     }
 }
 
-let gabe = new Instructor({
-    name: "Gabe",
-    specialty: "Frontend Web Development",
-    favLanguage: "JavaScript",
-    catchPhrase: `Yo! What's up`,
-});
+
 
 // #### Student
 
@@ -83,12 +78,7 @@ class Student extends Person {
     }
 }
 
-let evans = new Student({
-    name: "Evans",
-    previousBackground: "UX Design",
-    className: "WEBEU3",
-    favSubjects: ["CSS", "JavaScript"]
-});
+
 
 // #### Project Manager
 
@@ -101,7 +91,7 @@ let evans = new Student({
 // * `standUp` a method that takes in a slack channel and logs`{name} announces to {channel}, @channel standy times!​​​​​
 // * `debugsCode` a method that takes in a student object and a subject and logs out `{ name } debugs { student.name } 's code on {subject}`
 
-class ProjectManagers extends Instructor {
+class ProjectManager extends Instructor {
     constructor(data){
         super(data);
         this.gradClassName = data.gradClassName;
@@ -114,3 +104,23 @@ class ProjectManagers extends Instructor {
         console.log(`${this.name} debugs ${student}'s code on ${subject}!`)
     }
 }
+
+let gabe = new Instructor({
+    name: "Gabe",
+    specialty: "Frontend Web Development",
+    favLanguage: "JavaScript",
+    catchPhrase: `Yo! What's up`,
+});
+
+let evans = new Student({
+    name: "Evans",
+    previousBackground: "UX Design",
+    className: "WEBEU3",
+    favSubjects: ["CSS", "JavaScript"]
+});
+
+let toby = new ProjectManager({
+    name: "Toby",
+    gradClassName: "WEBEU3",
+    favInstructor: "Gabe",
+})
