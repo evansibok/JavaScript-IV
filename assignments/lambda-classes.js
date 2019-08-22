@@ -1,3 +1,5 @@
+// CODE here for your Lambda Classes
+
 // #### Person
 
 // * First we need a Person class. This will be our `base-class`
@@ -5,10 +7,8 @@
 // * Person receives `speak` as a method.
 // * This method logs out a phrase `Hello my name is Fred, I am from Bedrock` where `name` and `location` are the object's own props
 
-// CODE here for your Lambda Classes
-
 class Person {
-    constructor(data){
+    constructor(data) {
         this.name = data.name;
         this.age = data.age;
         this.location = data.location;
@@ -31,21 +31,19 @@ class Person {
 // * `grade` receives a`student` object and a`subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
 
 class Instructor extends Person {
-    constructor(data){
+    constructor(data) {
         super(data);
         this.specialty = data.specialty;
         this.favLanguage = data.favLanguage;
         this.catchPhrase = data.catchPhrase;
     }
-    demo(subject){
+    demo(subject) {
         console.log(`Today we are learning about ${subject}.`);
     }
-    grade(student, subject){
+    grade(student, subject) {
         console.log(`${student.name} receives a perfect score on ${subject}!`);
     }
 }
-
-
 
 // #### Student
 
@@ -61,7 +59,7 @@ class Instructor extends Person {
 // * `sprintChallenge` similar to PRAssignment but logs out`student.name has begun sprint challenge on {subject}`
 
 class Student extends Person {
-    constructor(data){
+    constructor(data) {
         super(data);
         this.previousBackground = data.previousBackground;
         this.className = data.className;
@@ -71,14 +69,12 @@ class Student extends Person {
         console.log(this.favSubjects); //*
     }
     PRAssignment(subject) {
-        console.log(`${this.name} has submitted a PR for ${subject}!`); // *
+        console.log(`${this.name} has submitted a PR for ${subject}`); // *
     }
-    sprintChallenge() {
-        console.log(`${this.name} has begun sprint challenge on ${subject}!`);
+    sprintChallenge(subject) {
+        console.log(`${this.name} has begun sprint challenge on ${subject}`);
     }
 }
-
-
 
 // #### Project Manager
 
@@ -92,16 +88,18 @@ class Student extends Person {
 // * `debugsCode` a method that takes in a student object and a subject and logs out `{ name } debugs { student.name } 's code on {subject}`
 
 class ProjectManager extends Instructor {
-    constructor(data){
+    constructor(data) {
         super(data);
         this.gradClassName = data.gradClassName;
         this.favInstructor = data.favInstructor;
     }
     standUp(channel) {
-        console.log(`${this.name} announces to ${channel}, @${channel} standby times!`);
+        console.log(
+            `${this.name} announces to ${channel}, @${channel} standby times!`
+        );
     }
     debugsCode(student, subject) {
-        console.log(`${this.name} debugs ${student}'s code on ${subject}!`)
+        console.log(`${this.name} debugs ${student.name}'s code on ${subject}!`);
     }
 }
 
@@ -109,7 +107,7 @@ let gabe = new Instructor({
     name: "Gabe",
     specialty: "Frontend Web Development",
     favLanguage: "JavaScript",
-    catchPhrase: `Yo! What's up`,
+    catchPhrase: `Yo! What's up`
 });
 
 let evans = new Student({
@@ -122,5 +120,5 @@ let evans = new Student({
 let toby = new ProjectManager({
     name: "Toby",
     gradClassName: "WEBEU3",
-    favInstructor: "Gabe",
-})
+    favInstructor: "Gabe"
+});
