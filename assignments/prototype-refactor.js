@@ -76,6 +76,44 @@ class Person {
 const adam = new Person({ name: "Adam", age: 23 }); 
 
 
+// TASK 3
+
+//   - Build a Baby constructor that subclasses the Person built earlier.
+//   - Babies of course inherit the ability to greet, which can be strange.
+//   - Babies should have the ability to play, which persons don't.
+//   - By playing, a string is returned with some text of your choosing.
+
+// function Baby(data) {
+//     Person.call(this, data.name, data.age);
+// }
+
+// Baby.prototype.play = function () {
+//     return `I am ${this.name} and I am playing!`;
+// }
+
+// const toni = new Baby(
+//     {
+//         name: "Baby Toni",
+//         age: "12 months"
+//     });
+
+// toni.play()
+
+class Baby {
+    constructor(data){
+        this.name = data.name;
+        this.age = data.age;
+    }
+    play() {
+        return `I am ${this.name} and I am playing!`;
+    }
+}
+
+const toni = new Baby({ name: "Baby Toni", age: "12 months" });
+
+toni.play()
+
+
 // TASK 4
 
 // Use your imagination and come up with constructors that allow to build objects
