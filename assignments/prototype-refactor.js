@@ -62,9 +62,8 @@ class Person {
     eatEdibles(food) {
         if (this.eat === true) {
             this.stomach.push(food);
-            return `${this.name} your ${this.stomach} is edible`;
+            return `${this.name} you are eating ${this.stomach}!`;
         }
-        return `${this.name}, that isn't edible`;
     }
     poop() {
         if (this.stomach.length >= 1) {
