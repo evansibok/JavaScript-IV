@@ -18,6 +18,8 @@ Prototype Refactor
 //   - Give persons the ability to poop.
 //   - When pooping, the stomach should empty.
 
+// PREVIOUS CODE
+
 // function Person(name, age) {
 //     this.name = name;
 //     this.age = Number(age);
@@ -75,6 +77,63 @@ class Person {
 
 const adam = new Person({ name: "Adam", age: 23 }); 
 
+// TASK 2
+
+//   - Build a Car constructor that takes model name and make.
+//   - Give cars the ability to drive a distance.
+//   - By driving a car, the distance driven should be added to an "odometer" property.
+//   - Give cars the ability to crash.
+//   - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
+//   - Give cars the ability to be repaired.
+//   - A repaired car can be driven again.
+
+// function Car(model, make) {
+//     this.make = make;
+//     this.model = model;
+//     this.odometer = 0;
+//     this.crashed = true;
+// }
+
+// Car.prototype.drive = function (distance) {
+//     this.odometer += distance;
+//     console.log(`I am driving at ${this.odometer} miles`);
+// }
+
+// Car.prototype.crash = function () {
+//     this.crashed
+//     return `I crashed at ${this.odometer} miles`;
+// }
+
+// Car.prototype.repair = function () {
+//     this.crashed = false;
+//     return `Your ${this.model} ${this.make} has been repaired`;
+// }
+
+// var toyota = new Car('Camry', 'E530');
+
+class Car {
+    constructor(data) {
+        this.make = data.make;
+        this.model = data.model;
+        this.odometer = 0;
+        this.crashed = true;
+    }
+    drive(distance) {
+        this.odometer = this.odometer + distance;
+        return `I am driving at ${this.odometer} miles`;
+    }
+    crash() {
+        if (this.crashed === true) {
+            return `I crashed at ${this.odometer} miles`;
+        }
+    }
+    repair() {
+        this.crashed = false;
+        return `Your ${this.model} ${this.make} has been repaired`;
+    }
+}
+
+var toyota = new Car({ make: 'Camry', model: 'E530'});
 
 // TASK 3
 
