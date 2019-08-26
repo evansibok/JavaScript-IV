@@ -50,7 +50,7 @@ Prototype Refactor
 // var adam = new Person('Adam', '23');
 
 class Person {
-    constructor(data){
+    constructor(data) {
         this.name = data.name;
         this.age = Number(data.age);
         this.eat = true;
@@ -74,7 +74,7 @@ class Person {
     }
 }
 
-const adam = new Person({ name: "Adam", age: 23 }); 
+const adam = new Person({ name: "Adam", age: 23 });
 
 // TASK 2
 
@@ -90,16 +90,19 @@ const adam = new Person({ name: "Adam", age: 23 });
 //     this.make = make;
 //     this.model = model;
 //     this.odometer = 0;
-//     this.crashed = true;
+//     this.crashed = false;
 // }
 
 // Car.prototype.drive = function (distance) {
+//     if (this.crashed) {
+//         return `I crashed at ${this.odometer} miles!`;
+//     }
 //     this.odometer += distance;
-//     console.log(`I am driving at ${this.odometer} miles`);
+//     return `I am driving at ${this.odometer} miles`;
 // }
 
 // Car.prototype.crash = function () {
-//     this.crashed
+//     this.crashed = true;
 //     return `I crashed at ${this.odometer} miles`;
 // }
 
@@ -108,23 +111,23 @@ const adam = new Person({ name: "Adam", age: 23 });
 //     return `Your ${this.model} ${this.make} has been repaired`;
 // }
 
-// var toyota = new Car('Camry', 'E530');
-
 class Car {
     constructor(data) {
         this.make = data.make;
         this.model = data.model;
         this.odometer = 0;
-        this.crashed = true;
+        this.crashed = false;
     }
     drive(distance) {
-        this.odometer = this.odometer + distance;
+        if (this.crashed) {
+            return `I crashed at ${this.odometer} miles`;
+        }
+        this.odometer += distance;
         return `I am driving at ${this.odometer} miles`;
     }
     crash() {
-        if (this.crashed === true) {
-            return `I crashed at ${this.odometer} miles`;
-        }
+        this.crashed = true;
+        return `I crashed at ${this.odometer} miles`;
     }
     repair() {
         this.crashed = false;
@@ -132,7 +135,15 @@ class Car {
     }
 }
 
-var toyota = new Car({ make: 'Camry', model: 'E530'});
+
+var toyota = new Car(
+    {
+        model: 'Camry',
+        make: 'E530'
+    }
+);
+
+
 
 // TASK 3
 
@@ -158,7 +169,7 @@ var toyota = new Car({ make: 'Camry', model: 'E530'});
 // toni.play()
 
 class Baby {
-    constructor(data){
+    constructor(data) {
         this.name = data.name;
         this.age = data.age;
     }
@@ -204,14 +215,14 @@ toni.play()
 // ericsson.ring();
 
 class Electronics {
-    constructor(data){
+    constructor(data) {
         this.maker = data.maker;
         this.model = data.model;
     }
 }
 
 class Phone extends Electronics {
-    constructor(data){
+    constructor(data) {
         super(data);
     }
     ring() {
@@ -225,8 +236,8 @@ class Pager extends Phone {
     }
 }
 
-var samsung = new Phone({maker: "Samsung", model: "S9"});
-var ericsson = new Pager({maker: "Ericsson", model: "T100"});
+var samsung = new Phone({ maker: "Samsung", model: "S9" });
+var ericsson = new Pager({ maker: "Ericsson", model: "T100" });
 
 samsung.ring();
 ericsson.ring();
